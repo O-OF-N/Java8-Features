@@ -22,7 +22,7 @@ public class Reduce {
 		Set<Set<Integer>> s1 = new HashSet<>();
 		running.forEach(a1 -> {
 			if (set != null && set.size() > 0)
-				set.forEach((Set<Integer> a2) -> {
+				set.forEach(a2 -> {
 					Set<Integer> a3 = new HashSet<>();
 					if (a1 == Collections.max(a2) + 1 && a3.add(a1)) {
 						a3.addAll(a2);
