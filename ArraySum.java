@@ -8,9 +8,8 @@ import java.util.List;
 import java.util.Set;
 
 public class Reduce {
-	static List<Integer> running = new LinkedList<>();
-	static Set<Set<Integer>> master = new HashSet<>();
-	static int itr = -1;
+	private static List<Integer> running = new LinkedList<>();
+	private Set<Set<Integer>> master = new HashSet<>();
 
 	public static void main(String[] args) {
 		running.addAll(Arrays.asList(new Integer[] { 1, 2, 3, 4 }));
