@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-public class ArraySum {
+public class Reduce {
 	static List<Integer> running = new LinkedList<>();
 	static Set<Set<Integer>> master = new HashSet<>();
 	static int itr = -1;
@@ -24,9 +24,8 @@ public class ArraySum {
 			if (set != null && set.size() > 0)
 				set.forEach((Set<Integer> a2) -> {
 					Set<Integer> a3 = new HashSet<>();
-					if (!a2.contains(a1) && a1 == Collections.max(a2)+1) {
+					if (a1 == Collections.max(a2)+1 && a3.add(a1)) {
 						a3.addAll(a2);
-						a3.add(a1);
 						s1.add(a3);
 					}
 				});
