@@ -14,11 +14,12 @@ public class Reduce {
 
 	public static void main(String[] args) {
 		running.addAll(Arrays.asList(new Integer[] { 1, 2, 3, 4 }));
-		Set<Set<Integer>> integers = append(null);
+		Reduce r1 = new Reduce();
+		Set<Set<Integer>> integers = r1.append(null);
 		System.out.println(integers);
 	}
 
-	public static Set<Set<Integer>> append(Set<Set<Integer>> set) {
+	public Set<Set<Integer>> append(Set<Set<Integer>> set) {
 		Set<Set<Integer>> s1 = new HashSet<>();
 		running.forEach(a1 -> {
 			if (set != null && set.size() > 0)
