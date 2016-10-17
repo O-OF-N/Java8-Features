@@ -20,18 +20,18 @@ public class Reduce {
 
 	public static Set<Set<Integer>> append(Set<Set<Integer>> set) {
 		Set<Set<Integer>> s1 = new HashSet<>();
-		for (Integer a1 : running) {
+		running.forEach(a1 -> {
 			if (set != null && set.size() > 0)
 				set.forEach((Set<Integer> a2) -> {
 					Set<Integer> a3 = new HashSet<>();
-					if (a1 == Collections.max(a2)+1 && a3.add(a1)) {
+					if (a1 == Collections.max(a2) + 1 && a3.add(a1)) {
 						a3.addAll(a2);
 						s1.add(a3);
 					}
 				});
 			else
 				s1.add(new HashSet<>(Arrays.asList(a1)));
-		}
+		});
 		if (s1 != null && s1.size() > 0) {
 			master.addAll(s1);
 			append(s1);
