@@ -23,13 +23,7 @@ public class Reduce {
 		Set<Set<Integer>> s1 = new HashSet<>();
 		running.forEach(a1 -> {
 			if (set != null && set.size() > 0)
-				set.forEach(a2 -> {
-					Set<Integer> a3 = new HashSet<>();
-					if (a1 == Collections.max(a2) + 1 && a3.add(a1)) {
-						a3.addAll(a2);
-						s1.add(a3);
-					}
-				});
+				set.forEach(a2 -> addToSet(s1, a1, a2));
 			else
 				s1.add(new HashSet<>(Arrays.asList(a1)));
 		});
@@ -38,5 +32,13 @@ public class Reduce {
 			append(s1);
 		}
 		return master;
+	}
+
+	public void addToSet(Set<Set<Integer>> s1, Integer a1, Set<Integer> a2) {
+		Set<Integer> a3 = new HashSet<>();
+		if (a1 == Collections.max(a2) + 1 && a3.add(a1)) {
+			a3.addAll(a2);
+			s1.add(a3);
+		}
 	}
 }
