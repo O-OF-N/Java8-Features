@@ -2,14 +2,11 @@ package com.assignment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Reduce {
-	private static List<Integer> running;
+	private static List<Integer> running = new LinkedList<>();
 	private LinkedList<LinkedList<Integer>> master = new LinkedList<>();
 	private final Integer[] input = new Integer[] { 15, 36, 27, 15 };
 
@@ -19,15 +16,23 @@ public class Reduce {
 	}
 
 	public LinkedList<LinkedList<Integer>> callAppend() {
-		running = IntStream.range(0, input.length).mapToObj(a -> new Integer(a)).collect(Collectors.toList());
+		LinkedList<LinkedList<Integer>> result = new LinkedList<>();
+		for (int i = 0; i < input.length; i++) {
+			running.add(i);
+		}
 		append(null);
-		return (LinkedList<LinkedList<Integer>>) master.stream().map(a-> posToVal(a))
-				.collect(Collectors.toCollection(LinkedList::new));
+		for (LinkedList<Integer> a : master) {
+			result.add(posToVal(a));
+		}
+		return result;
 	}
-	
-	public final LinkedList<Integer> posToVal(LinkedList<Integer> intList){
-		return (LinkedList<Integer>) intList.stream().map(a -> input[a])
-				.collect(Collectors.toCollection(LinkedList::new));
+
+	public final LinkedList<Integer> posToVal(LinkedList<Integer> intList) {
+		LinkedList<Integer> result = new LinkedList<>();
+		for (Integer a : intList) {
+			result.add(input[a]);
+		}
+		return result;
 	}
 
 	public LinkedList<LinkedList<Integer>> append(LinkedList<LinkedList<Integer>> set) {
